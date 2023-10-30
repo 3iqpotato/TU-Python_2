@@ -42,8 +42,20 @@
 products = ['Laptop', 'Computer', 'Mouse', 'Key Board']
 prices = [3333, 4000, 120, 90]
 sold_products = 0
+options = {
+    1: 'Add product',
+    2: 'Sell product',
+    3: 'Show menu',
+    4: 'Show cheapest product',
+    5: 'Show most expensive product',
+    6: 'Show products in price range',
+    7: 'Show profit'
+}
 
 while True:
+    for n, value in options.items():
+        print(f"Option {n} {value}" )
+    print()
     option = int(input('Enter option: '))
 
     if option == 1:
@@ -55,21 +67,22 @@ while True:
 
     elif option == 2:
         product = input('Enter a product: ')
-
+        count = int(input("Enter count: "))
         if product not in products:
             print('Invalid product')
 
         else:
             idx = products.index(product)
-            sold_products+=prices[idx]
+            sold_products+=prices[idx] * count
 
             print(f'The product price is {prices[idx]}')
             print(f'Thanks for your purchase!')
 
 
     elif option == 3:
+        print('Products at the store:')
         for i in range(len(products)):
-            print(f'{products[i]} costs {prices[i]}lv.')
+            print(f'{products[i]} --- {prices[i]} lv.')
 
     elif option == 4:
         min_price_idx = prices.index(min(prices))
