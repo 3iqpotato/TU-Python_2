@@ -111,7 +111,65 @@ while True:
     elif option == 7:
         print(f'The profit is {sold_products}')
 
+##################################################################
+#new solution
+##################################################################
+def find_min_price(list_prices):
+    curr_min = float('inf')
+    for price in list_prices:
+        if curr_min > price:
+            curr_min = price
+    return curr_min
 
+
+def find_max_price(list_prices):
+    curr_max = float('-inf')
+    for price in list_prices:
+        if curr_max < price:
+            curr_max = price
+    return curr_max
+
+
+
+products = ['Laptop', 'Computer', 'Mouse', 'Key Board']
+prices = [3333, 4000, 120, 90]
+sold_products = []
+options = {
+    1: 'Add product',
+    2: 'Sell product',
+    3: 'Show menu',
+    4: 'Show cheapest product',
+    5: 'Show most expensive product',
+    6: 'Show products in price range',
+    7: 'Show profit'
+}
+
+while True:
+    for n, value in options.items():
+        print(f"Option {n} {value}" )
+    print()
+    option = int(input('Enter option: '))
+
+    if option == 1:
+        product = input('Enter a product: ')
+        price = float(input("Enter price: "))
+
+        products.append(product)
+        prices.append(price)
+
+    elif option == 2:
+        product = input('Enter a product: ')
+        count = int(input("Enter count: "))
+        if product not in products:
+            print('Invalid product')
+
+        else:
+            idx = products.index(product)
+            for _ in range(count):
+                sold_products.append(products[idx])
+
+            print(f'The products price is {prices[idx] * count}')
+            print(f'Thanks for your purchase!')
 
 
 
