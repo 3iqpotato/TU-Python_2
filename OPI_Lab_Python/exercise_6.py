@@ -11,6 +11,10 @@ class Apple:
         elif self.kind == 'devil':
             self.color = 'purple'
 
+    def __str__(self):
+        return f"Apple kind is {self.kind} and taste is {self.taste}"
+
+
 apple = Apple('golden', 'kisela')
 
 
