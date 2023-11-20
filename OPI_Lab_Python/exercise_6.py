@@ -41,6 +41,7 @@ class Cat(Animal):
 
 c = Cat('kotka')
 c.talk()
+c.move()
 #
 # class Fishes(Animal):
 #     def __init__(self, type):
@@ -55,16 +56,22 @@ class Dog(Animal):
         print('bla bal bal')
 
     def move(self):
-        print('runnnnnnnnnnnnnnnnnnnnnnnnnnnnnn')
+        print('I can run')
 
+d = Dog('dog')
+d.move()
+d.talk()
 class Carp(Animal):
     def __init__(self, type):
         super().__init__()
         self.type = type
 
     def move(self):
-        print('swimmmmm')
+        print('I can swim')
 
+carp = Carp('riba')
+carp.move()
+carp.talk()
 class Duck(Animal):
     def __init__(self, type):
         super().__init__()
@@ -74,13 +81,23 @@ class Duck(Animal):
         print('ap pa pa pa')
 
     def move(self):
-        print('fly')
+        print('I can walk')
 
-class GoldenFish(Animal, type):
-    def __init__(self):
+
+duck = Duck('duck')
+d.talk()
+d.move()
+class GoldenFish(Animal):
+    def __init__(self, type):
         super().__init__()
         self.type = type
 
     def move(self):
-        print('swim')
+        print('I can swim')
 
+    def talk(self):
+        print('Tell me your wishes')
+
+g_fish = GoldenFish('goldfihs')
+g_fish.talk()
+g_fish.move()
