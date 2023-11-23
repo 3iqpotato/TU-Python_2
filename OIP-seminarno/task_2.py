@@ -136,39 +136,39 @@
 #
 #
 # #задача 7
-# list_nums = []
-# for i in range(1, 50):
-#     if i % 3 == 0:
-#         list_nums.append(i)
-#
-# print(list_nums)
-# for i in list_nums:
-#     if i % 4 == 0:
-#         list_nums.remove(i)
-#
-# print(list_nums)
-#
-# new_list_nums = []
-# for i in range(1, 50):
-#     if i % 5 == 0:
-#         new_list_nums.append(i)
-#
-# print(new_list_nums)
-#
-# i = 0
-# for idx in range(1, len(list_nums)):
-#     if idx % 2 == 0:
-#         i += 1
-#         list_nums.insert(idx, (new_list_nums[i]))
-#
-# print(list_nums)
-# print(sorted(list_nums, reverse=True))
-# for el in list_nums:
-#     if list_nums.count(el) > 1:
-#         list_nums.remove(el)
-#
-# print(list_nums)
-# print()
+list_nums = []
+for i in range(1, 50):
+    if i % 3 == 0:
+        list_nums.append(i)
+
+print(list_nums)
+for i in list_nums:
+    if i % 4 == 0:
+        list_nums.remove(i)
+
+print(list_nums)
+
+new_list_nums = []
+for i in range(1, 50):
+    if i % 5 == 0:
+        new_list_nums.append(i)
+
+print(new_list_nums)
+
+i = 0
+for idx in range(1, len(list_nums)):
+    if idx % 2 == 0:
+        list_nums.insert(idx, (new_list_nums[i]))
+        i += 1
+
+print(list_nums)
+print(sorted(list_nums, reverse=True))
+for el in list_nums:
+    if list_nums.count(el) > 1:
+        list_nums.remove(el)
+
+print(list_nums)
+print()
 #
 #
 #
