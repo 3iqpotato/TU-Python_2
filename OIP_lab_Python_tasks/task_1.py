@@ -58,7 +58,7 @@ def visualize_dynamic_changes(classroom_width, classroom_length, population, fit
         plt.legend()
 
         plt.subplot(1, 2, 2)
-        plt.plot(range(1, generation + 2), fitness_scores[:generations + 1], marker='o')
+        plt.plot(range(1, generation + 2), fitness_scores[:generation + 1], marker='o')
         plt.xlabel('Поколение')
         plt.ylabel('Резултат от фитнеса')
         plt.title('Резултат от фитнеса за различните поколения')
@@ -105,13 +105,28 @@ for generation in range(generations):
 
     population.append(offspring)
 
+# visualize_initial_and_fina(classroom_width, classroom_length, initial_population, population[-1])
+#
+# visualize_dynamic_changes(classroom_width, classroom_length, population, all_fitness_scores)
 
+print(best_solution)
+print(best_fitness)
 
+# trajectory_scores = []
+# for generation in range(generations + 1):
+#     distances = [np.linalg.norm(np.array(point) - np.array(best_solution)) for point in population[generation]]
+#     trajectory_scores.append(np.mean(distances))
+#
+# plt.figure(figsize=(10, 6))
+# plt.plot(range(generations+1), trajectory_scores, marker='o')
+# plt.xlabel('Поколение')
+# plt.ylabel('Средно разстояние до най доброто решение')
+# plt.title('траектория на популацията')
+# plt.show()
 
-
-
-
-
-
-
-
+# plt.figure()
+# plt.plot(range(1, generations+1), all_fitness_scores, marker='o')
+# plt.xlabel('Поколение')
+# plt.ylabel('Най-добър фирнес резултат')
+# plt.title('Графика на сходсво')
+# plt.show()
