@@ -19,8 +19,6 @@ apple = Apple('golden', 'kisela')
 
 
 
-
-
 class Animal:
     def __init__(self):
         pass
@@ -46,6 +44,7 @@ class Cat(Animal):
 c = Cat('kotka')
 c.talk()
 c.move()
+print()
 #
 # class Fishes(Animal):
 #     def __init__(self, type):
@@ -57,7 +56,7 @@ class Dog(Animal):
         self.type = type
 
     def talk(self):
-        print('bla bal bal')
+        print('bal bal bal')
 
     def move(self):
         print('I can run')
@@ -65,6 +64,7 @@ class Dog(Animal):
 d = Dog('dog')
 d.move()
 d.talk()
+print()
 class Carp(Animal):
     def __init__(self, type):
         super().__init__()
@@ -76,21 +76,23 @@ class Carp(Animal):
 carp = Carp('riba')
 carp.move()
 carp.talk()
+print()
 class Duck(Animal):
     def __init__(self, type):
         super().__init__()
         self.type = type
 
     def talk(self):
-        print('ap pa pa pa')
+        print('pa pa pa pa')
 
     def move(self):
         print('I can walk')
 
 
 duck = Duck('duck')
-d.talk()
-d.move()
+duck.talk()
+duck.move()
+print()
 class GoldenFish(Animal):
     def __init__(self, type):
         super().__init__()

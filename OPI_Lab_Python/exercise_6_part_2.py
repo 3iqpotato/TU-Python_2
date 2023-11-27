@@ -3,7 +3,7 @@
 
 class Animal:
     def __init__(self, age):
-        self.__age = age
+        self.__age = self.set_age(age)
 
     # @property
     # def age(self):
@@ -12,7 +12,12 @@ class Animal:
     #
     # @age.setter
     # def age(self, age):
-    #     self.__age = age
+    #     if age > 0:
+    #         self.__age = age
+    #     else:
+    #         self.__age = 0
+
+
     def talk(self):
         print('I cant talk')
 
@@ -20,12 +25,15 @@ class Animal:
         print('I cant move')
 
     def get_age(self):
-        print(self.__age)
+        return self.__age
 
     def set_age(self, age):
         if age > 0:
-
-            self.__age = age
+             self.__age = age
+             return age
+        else:
+             self.__age = 0
+             return 0
 
     def __str__(self):
         return f"Animal is {self.__age} years old."
@@ -44,9 +52,10 @@ class GoldFish(Animal):
 g = GoldFish(20, 'fish')
 g.get_age()
 print(g)
-g.set_age(30)
-g.get_age()
+g.set_age(g.get_age() + 1)
+
 print(g)
+print()
 
 class Dog(Animal):
     def __init__(self, age, type):
@@ -59,10 +68,11 @@ class Dog(Animal):
     def move(self):
         print('I can run')
 
-d = Dog(10, 'dog')
+d = Dog(-10, 'dog')
 d.move()
 d.talk()
 print(d)
+print()
 class Carp(Animal):
     def __init__(self, age, type):
         super().__init__(age)
@@ -75,6 +85,7 @@ carp = Carp(10, 'riba')
 carp.move()
 carp.talk()
 print(carp)
+print()
 class Duck(Animal):
     def __init__(self,age, type):
         super().__init__(age)
@@ -87,7 +98,7 @@ class Duck(Animal):
         print('I can walk')
 
 
-duck = Duck(10,'duck')
-d.talk()
-d.move()
-print(d)
+duck = Duck(18,'duck')
+duck.talk()
+duck.move()
+print(duck)
