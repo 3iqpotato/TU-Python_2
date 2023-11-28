@@ -109,8 +109,8 @@ for generation in range(generations):
 #
 # visualize_dynamic_changes(classroom_width, classroom_length, population, all_fitness_scores)
 
-print(best_solution)
-print(best_fitness)
+# print(best_solution)
+# print(best_fitness)
 
 # trajectory_scores = []
 # for generation in range(generations + 1):
