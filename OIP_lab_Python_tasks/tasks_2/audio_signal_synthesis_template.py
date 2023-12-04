@@ -24,7 +24,7 @@ def generate_sine_wave(frequency, duration, amplitude):
   time = np.linspace(0, duration, num_samples)
 
   # Form the audio signal (eq. 1).
-
+  audio_signal = amplitude * np.sin(2 * np.pi * frequency * time)
   return audio_signal
 
 def generate_rectangular_wave(frequency, duration, amplitude):
@@ -41,13 +41,16 @@ def generate_rectangular_wave(frequency, duration, amplitude):
   """
 
   # Calculate number of samples
-  
+  num_samples = int(sampling_rate * duration)
+
+  # Generate a time scale.
+  time = np.linspace(0, duration, num_samples)
 
   # Generate a time scale.
   
 
   # Form the audio signal (eq. 2).
-  
+  audio_signal = amplitude * np.sign(np.sin(2 * np.pi * frequency * time))
 
   return audio_signal
 
@@ -65,16 +68,19 @@ def generate_asymetric_triangular_wave(frequency, duration, amplitude):
   """
 
   # Calculate number of samples
-  
+  num_samples = int(sampling_rate * duration)
+
+  # Generate a time scale.
+  time = np.linspace(0, duration, num_samples)
 
   # Generate a time scale.
   
-
+  T = 1 / frequency
   # Calculate the period
   
 
   # Form the audio signal (eq. 3).
-  
+  audio_signal = amplitude * (2 / T*(time%T) - 1)
 
   return audio_signal
 
@@ -91,7 +97,18 @@ def generate_symetric_triangular_wave(frequency, duration, amplitude):
     A simple audio signal with a symetric triangular wave form.
   """
   # Calculate number of samples
-  
+  num_samples = int(sampling_rate * duration)
+
+  # Generate a time scale.
+  time = np.linspace(0, duration, num_samples)
+
+  # Generate a time scale.
+
+  T = 1 / frequency
+  # Calculate the period
+
+  # Form the audio signal (eq. 3).
+  audio_signal = 2 * amplitude * (1- 2/T * abs((time % T - T/2))) - 1
 
   # Generate a time scale.
   
@@ -122,6 +139,21 @@ def visualize_signal(audio_signal, duration, title="Audio signal"):
   # Add title
 
   # Show the plot.
+  time = np.linspace(0, duration, len(audio_signal))
+
+  # Plot the audio signal
+  plt.figure(figsize=(10, 6))
+  plt.plot(time, audio_signal, color='b')
+
+  # Add labels to the axes
+  plt.xlabel('Time (seconds)')
+  plt.ylabel('Amplitude')
+
+  # Add title
+  plt.title(title)
+
+  # Show the plot
+  plt.show()
 
 
 def plot_positive_spectrum(signal, title = "Signal Spectrum (Positive Frequencies Only)"):
@@ -157,6 +189,28 @@ def plot_positive_spectrum(signal, title = "Signal Spectrum (Positive Frequencie
 
   # Show the plot.
 
+  # Calculate the frequencies associated with the FFT resul
+
+  # Select only positive frequencies
+  # positive_frequencies = frequencies[:len(frequencies) // 2]
+  # positive_signal_fft = 2.0 / len(signal) * np.abs(signal_fft[:len(signal) // 2])
+
+  # Plot the amplitude spectrum for positive frequencies
+  plt.plot(positive_frequencies, positive_signal_fft, color='b')
+
+  # Add labels to the axes
+  plt.xlabel('Frequency (Hz)')
+  plt.ylabel('Amplitude')
+
+  # Add title
+  plt.title(title)
+
+  # Add grid
+  plt.grid(True)
+
+  # Show the plot
+  plt.show()
+
 
 def save_signal_to_wav(filename, signal):
   """
@@ -187,7 +241,7 @@ def main():
   """
 
   # Define the parameters for the audio signal.
-  frequency = 4x0 # where x is the last digit of your faculty number !
+  frequency = 5 # where x is the last digit of your faculty number !
   duration = 1
   amplitude = 1
 
@@ -198,9 +252,27 @@ def main():
   save_signal_to_wav("sin_wave.wav", audio_signal)
 
   # Generate rectangular audio signal.
-
+  audio_signal_rectangular = generate_rectangular_wave(frequency, duration, amplitude)
+  visualize_signal(audio_signal_rectangular, duration, title="Rectangular wave")
+  plot_positive_spectrum(audio_signal_rectangular, title="Rectangular wave spectrum (positive frequencies only)")
+  save_signal_to_wav("rectangular_wave.wav", audio_signal_rectangular)
 
   # Generate asymetric triangular audio signal.
+  audio_signal_asymmetric_triangular = generate_asymetric_triangular_wave(frequency, duration, amplitude)
+  visualize_signal(audio_signal_asymmetric_triangular, duration, title="Asymmetric Triangular wave")
+  plot_positive_spectrum(audio_signal_asymmetric_triangular,
+                         title="Asymmetric Triangular wave spectrum (positive frequencies only)")
+  save_signal_to_wav("asymmetric_triangular_wave.wav", audio_signal_asymmetric_triangular)
+
+  # Generate symetric triangular audio signal.
+  audio_signal_symmetric_triangular = generate_symetric_triangular_wave(frequency, duration, amplitude)
+  visualize_signal(audio_signal_symmetric_triangular, duration, title="Symmetric Triangular wave")
+  plot_positive_spectrum(audio_signal_symmetric_triangular,
+                         title="Symmetric Triangular wave spectrum (positive frequencies only)")
+  save_signal_to_wav("symmetric_triangular_wave.wav", audio_signal_symmetric_triangular)
+
+
+# Generate asymetric triangular audio signal.
 
 
   # Generate symetric triangular audio signal.
