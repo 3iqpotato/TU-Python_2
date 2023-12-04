@@ -108,7 +108,7 @@ for generation in range(generations):
 # visualize_initial_and_fina(classroom_width, classroom_length, initial_population, population[-1])
 #
 # visualize_dynamic_changes(classroom_width, classroom_length, population, all_fitness_scores)
-
+#
 # print(best_solution)
 # print(best_fitness)
 
@@ -116,7 +116,7 @@ for generation in range(generations):
 # for generation in range(generations + 1):
 #     distances = [np.linalg.norm(np.array(point) - np.array(best_solution)) for point in population[generation]]
 #     trajectory_scores.append(np.mean(distances))
-#
+# #
 # plt.figure(figsize=(10, 6))
 # plt.plot(range(generations+1), trajectory_scores, marker='o')
 # plt.xlabel('Поколение')
