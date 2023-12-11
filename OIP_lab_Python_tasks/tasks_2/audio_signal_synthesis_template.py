@@ -22,7 +22,8 @@ def generate_sine_wave(frequency, duration, amplitude):
 
   # Generate a time scale.
   time = np.linspace(0, duration, num_samples)
-
+  print(frequency)
+  print(time)
   # Form the audio signal (eq. 1).
   audio_signal = amplitude * np.sin(2 * np.pi * frequency * time)
   return audio_signal
@@ -47,7 +48,7 @@ def generate_rectangular_wave(frequency, duration, amplitude):
   time = np.linspace(0, duration, num_samples)
 
   # Generate a time scale.
-  
+
 
   # Form the audio signal (eq. 2).
   audio_signal = amplitude * np.sign(np.sin(2 * np.pi * frequency * time))
@@ -74,10 +75,10 @@ def generate_asymetric_triangular_wave(frequency, duration, amplitude):
   time = np.linspace(0, duration, num_samples)
 
   # Generate a time scale.
-  
+
   T = 1 / frequency
   # Calculate the period
-  
+
 
   # Form the audio signal (eq. 3).
   audio_signal = amplitude * (2 / T*(time%T) - 1)
@@ -111,13 +112,13 @@ def generate_symetric_triangular_wave(frequency, duration, amplitude):
   audio_signal = 2 * amplitude * (1- 2/T * abs((time % T - T/2))) - 1
 
   # Generate a time scale.
-  
+
 
   # Calculate the period
-  
+
 
   # Form the audio signal (eq. 4).
-  
+
   return audio_signal
 
 def visualize_signal(audio_signal, duration, title="Audio signal"):
@@ -127,7 +128,7 @@ def visualize_signal(audio_signal, duration, title="Audio signal"):
   Arguments:
     audio_signal: The audio signal to visualize.
     duration: The duration of the signal in seconds.
-    
+
   Returns:
     None: This function displays the plot but does not return any values.
   """
@@ -170,14 +171,14 @@ def plot_positive_spectrum(signal, title = "Signal Spectrum (Positive Frequencie
 
   # Perform FFT on the signal
   signal_fft = np.fft.fft(signal)
-  
+
   # Calculate the frequencies associated with the FFT result
   frequencies = np.fft.fftfreq(len(signal), 1 / sampling_rate)
-  
+
   # Select only positive frequencies
   positive_frequencies = frequencies[:len(frequencies)//2]
   positive_signal_fft = 2.0 / len(signal) * np.abs(signal_fft[:len(signal)//2])
-  
+
   # Plot the amplitude spectrum for positive frequencies
   plt.figure(figsize=(10, 6))
 
@@ -223,13 +224,13 @@ def save_signal_to_wav(filename, signal):
   Returns:
     None
   """
-  
+
   # Calculate the maximum amplitude of the signal
   max_amplitude = np.max(np.abs(signal))
-  
+
   # Normalize the signal to the range [-1, 1]
   normalized_signal = signal / max_amplitude
-  
+
   # Write the signal to a WAV file
   wavfile.write(filename, sampling_rate, normalized_signal)
 
@@ -276,7 +277,7 @@ def main():
 
 
   # Generate symetric triangular audio signal.
- 
+
 
 if __name__ == "__main__":
   main()
