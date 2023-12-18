@@ -49,7 +49,7 @@ with open('students_3.bin', 'r') as f:
 #     f4.write(str(bin_student_pickle))
 #
 # with open("students2.bin","w") as f5:
-#     f5.dump(students)
+#     f5.write(json.dumps(students))
 #
 # with open("students2.bin","r") as f6:
 #     print(type(pickle.load(f6)))
